@@ -6,6 +6,7 @@ from Building import Building
 import csv
 
 
+# load csv file
 def csvToCallList(csvFile):
     callList = []
     with open(csvFile, 'r') as csv_file:
@@ -16,18 +17,22 @@ def csvToCallList(csvFile):
     return callList
 
 
+# The offline algo
 def offlineAlgo(Building_json, Calls_csv, Output_csv):
+    # get a call list and a building from the files
     callList = csvToCallList(Calls_csv)
     building1 = Building(Building_json)
     for i in callList:
         fastesElev = (theFastElev(building1, i))
         fastElev = building1.getElev(fastesElev)
+        # if this elev has no calls
         if len(fastElev.listOfCall) == 0:
             if i.direction == -1:
                 fastElev.flag = False
         fastElev.listOfCall.append(i)
         i.optElev = fastElev.id
         fastElev.ElevPos(i.src)
+        # make a csv file from the update call list
     outList = []
     for call in callList:
         outList.append(call.__dict__.values())
@@ -36,9 +41,12 @@ def offlineAlgo(Building_json, Calls_csv, Output_csv):
         writer.writerows(outList)
 
 
+# check the fast elev  that can reach to the given call
 def theFastElev(building, call: CallForElevator):
     minimum = sys.maxsize
+    fastElev = 0
     for elev in building.ElevatorList:
+        # check if this elev can reach to the call
         if int(call.src) <= elev.maxFloor or int(call.src) >= elev.minFloor:
             if len(elev.listOfCall) == 0:
                 numberOfFloors = int(elev.pos) - int(call.src)
@@ -60,10 +68,11 @@ def theFastElev(building, call: CallForElevator):
                         if dis < minimum:
                             minimum = dis
                             fastElev = int(elev.id)
-    print(fastElev)
+
     return fastElev
 
 
+# calculate the total time that takes the elev to reach to call's src
 def totalTimeForCall(elev: Elev, call: CallForElevator):
     time = 0
     for i in elev.listOfCall:
@@ -82,4 +91,4 @@ class Main:
 
 
 myName = Main()
-#offlineAlgo("B5.json", "Calls_a.csv", "out.csv")
+offlineAlgo("B1.json", "Calls_d.csv", "out.csv")
