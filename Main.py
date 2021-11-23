@@ -44,6 +44,7 @@ def offlineAlgo(Building_json, Calls_csv, Output_csv):
 # check the fast elev  that can reach to the given call
 def theFastElev(building, call: CallForElevator):
     minimum = sys.maxsize
+    fastElev=0
     for elev in building.ElevatorList:
         # check if this elev can reach to the call
         if int(call.src) <= elev.maxFloor or int(call.src) >= elev.minFloor:
@@ -67,7 +68,7 @@ def theFastElev(building, call: CallForElevator):
                         if dis < minimum:
                             minimum = dis
                             fastElev = int(elev.id)
-    print(fastElev)
+    
     return fastElev
 
 
