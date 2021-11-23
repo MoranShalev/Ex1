@@ -91,4 +91,4 @@ class Main:
 
 
 myName = Main()
-offlineAlgo("B1.json", "Calls_d.csv", "out.csv")
+# offlineAlgo("B1.json", "Calls_d.csv", "out.csv")
