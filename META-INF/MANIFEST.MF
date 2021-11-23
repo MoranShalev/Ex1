@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: ex1.Ex1_main
+Class-Path: .
+
