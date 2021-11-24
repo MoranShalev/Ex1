@@ -36,7 +36,7 @@ totalTimeForCall- this function find the elevators time to reach a call. this ca
 
 ## UML of our project:
 
-![UML](https://user-images.githubusercontent.com/74601548/143281008-683864af-cd7c-40fc-b5a0-2a6775055530.png)
+![UML](https://user-images.githubusercontent.com/94013553/143307348-3dbbb562-1ba5-4314-b5c8-c839e477654a.png)
 
 ## Our results:
 ![RrESULTS](https://user-images.githubusercontent.com/74601548/143285953-8e8452ff-2800-4fad-8fc7-cb0a50e45307.png)
